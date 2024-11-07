@@ -8,18 +8,15 @@ namespace GestaoAcademica.Models
 {
   public class Pessoa
   {
-    public Pessoa (string nome, string sobrenome, string cpf) 
+    public Pessoa(string nome, string sobrenome, string cpf)
     {
       Nome = nome;
       Sobrenome = sobrenome;
       Cpf = cpf;
     }
 
-    public Pessoa(string nome, string sobrenome, string cpf, int idade)
+    public Pessoa(string nome, string sobrenome, string cpf, int idade) : this(nome, sobrenome, cpf)
     {
-      Nome = nome;
-      Sobrenome = sobrenome;
-      Cpf = cpf;
       Idade = idade;
     }
 
@@ -27,7 +24,7 @@ namespace GestaoAcademica.Models
     private string _sobrenome;
     private string _cpf;
 
-    public string Nome 
+    public string Nome
     {
       get => _nome;
 
@@ -54,7 +51,7 @@ namespace GestaoAcademica.Models
         _sobrenome = value;
       }
     }
-    
+
     public string Cpf
     {
       get => _cpf;
@@ -69,6 +66,7 @@ namespace GestaoAcademica.Models
       }
     }
 
+    public string NomeCompleto => $"{Nome} {Sobrenome}";
     public int Idade {  get; set; }
 
     public void Informacoes()
@@ -76,7 +74,7 @@ namespace GestaoAcademica.Models
       if (Idade != 0)
       {
         Console.WriteLine("\n--------Dados--------\n" +
-          $"\nNome: {Nome} {Sobrenome}" +
+          $"\nNome: {NomeCompleto}" +
           $"\nCPF: {Cpf}" +
           $"\nIdade: {Idade}"
         );
@@ -84,7 +82,7 @@ namespace GestaoAcademica.Models
       else
       {
         Console.WriteLine("\n--------Dados--------\n" +
-          $"\nNome: {Nome} {Sobrenome}" +
+          $"\nNome: {NomeCompleto}" +
           $"\nCPF: {Cpf}"
         );
       }
