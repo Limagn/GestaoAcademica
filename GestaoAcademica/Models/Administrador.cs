@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestaoAcademica.Models
 {
-  public abstract class Usuario
+  internal class Administrador
   {
   }
 }

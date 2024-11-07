@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GestaoAcademica.Models
 {
-  public class Professor : Pessoa
+  public class Professor 
   {
+    
   }
 }
