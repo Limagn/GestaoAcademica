@@ -5,8 +5,11 @@ namespace GestaoAcademica
 {
   public class Program
   {
-    public static void Main(string[] args)
+    public static void Main()
     {
+      Administrador adm = new();
+      Usuario user = new();
+
       int permissao = 0;
       while (permissao == 0)
       {
@@ -21,15 +24,18 @@ namespace GestaoAcademica
         switch (permissao)
         {
           case 1:
-            IniciarAluno();
+            user.IniciarAluno();
+            permissao = 0;
             break;
 
           case 2:
-            IniciarProfessor();
+            user.IniciarProfessor();
+            permissao = 0;
             break;
 
           case 3:
-            IniciarAdministrador();
+            user.IniciarAdmin(adm);
+            permissao = 0;
             break;
 
           case 4:
@@ -42,43 +48,6 @@ namespace GestaoAcademica
             break;
         }
       }
-    }
-
-    public static void IniciarAluno()
-    {
-      Console.Clear();
-      Console.WriteLine("Aluno.");
-
-
-      //TODO: Implementar metodos permitidos aos alunos
-      //Console.WriteLine("Digite a opção desejada:")
-
-      //TODO: Opcao voltar ao menu
-      //Console.WriteLine("00 - Voltar ao menu inicial");
-    }
-
-    public static void IniciarProfessor()
-    {
-      Console.Clear();
-      Console.WriteLine("Professor.");
-
-      //TODO: Implementar metodos permitidos aos professores
-      //Console.WriteLine("Digite a opção desejada:")
-
-      //TODO: Opcao voltar ao menu
-      //Console.WriteLine("00 - Voltar ao menu inicial
-    }
-
-    public static void IniciarAdministrador()
-    {
-      Console.Clear();
-      Console.WriteLine("Adm.");
-
-      //TODO: Implementar metodos permitidos aos administradores
-      //Console.WriteLine("Digite a opção desejada:")
-
-      //TODO: Opcao voltar ao menu
-      //Console.WriteLine("00 - Voltar ao menu inicial
     }
   }
 }
