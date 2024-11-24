@@ -8,30 +8,35 @@ namespace GestaoAcademica.Models
 {
   public class Aluno : Pessoa, IAvaliacao
   {
-    public Aluno(string nome, string sobrenome, string matricula) : base(nome, sobrenome, matricula)
+    public Aluno(string nome, string sobrenome, string matricula, string curso) : base(nome, sobrenome, matricula)
     {
+      Curso = curso;
     }
-
-    public List<Professor> Professores { get; set; }
+    public string Curso { get; set; }
 
     public override void Apresentacao()
     {
       if (Idade != 0)
       {
-        Console.WriteLine($"Olá! Meu nome é {NomeCompleto} e tenho {Idade} anos. Sou aluno na UniFOA e tenho aula de:");
+        Console.WriteLine($"Olá! Meu nome é {NomeCompleto} e tenho {Idade} anos. Sou aluno na UniFOA e estudo {Curso}");
+        Console.WriteLine();
       }
       else
       {
-        Console.WriteLine($"Olá! Meu nome é {NomeCompleto}. Sou professor na UniFOA e tenho aula de:");
+        Console.WriteLine($"Olá! Meu nome é {NomeCompleto}. Sou aluno na UniFOA e estudo {Curso}");
+        Console.WriteLine();
       }
     }
-    public void Avaliar(string professor, int nota)
+    public void Avaliar(string matricProfessor, int nota)
     {
-      Console.WriteLine($"O aluno {NomeCompleto} avaliou o {professor} com a nota {nota}.");
+      BancoDeDados.DictProfessores.TryGetValue(matricProfessor, out Professor professor);
+      Console.Clear();
+      Console.WriteLine($"O aluno {NomeCompleto} avaliou o professor {professor.NomeCompleto} com a nota {nota}.");
+      Console.WriteLine();
     }
     public override string ToString()
     {
-      return $"Nome: {Nome} {Sobrenome}, Matrícula: {Matricula}";
+      return $"Nome: {Nome} {Sobrenome}, Matrícula: {Matricula}, Curso: {Curso}";
     }
 
   }

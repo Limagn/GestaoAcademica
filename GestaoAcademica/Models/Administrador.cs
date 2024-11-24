@@ -10,10 +10,6 @@ namespace GestaoAcademica.Models
   {
     public string Login => "admin";
     public string Senha => "admin";
-
-    //public static Dictionary<string, Aluno> DictAlunos = new Dictionary<string, Aluno>();
-    //public static Dictionary<string, Professor> DictProfessores = new Dictionary<string, Professor>();
-
     public void AdicionarAluno()
     {
       Console.WriteLine("Matrícula do(a) aluno(a):");
@@ -22,15 +18,24 @@ namespace GestaoAcademica.Models
       string nome = Console.ReadLine();
       Console.WriteLine("Sobrenome do(a) aluno(a):");
       string sobrenome = Console.ReadLine();
+      Console.WriteLine("Curso do(a) aluno(a):");
+      string curso = Console.ReadLine();
 
-      Aluno aluno = new Aluno(nome, sobrenome, matricula);
-      BancoDeDados.DictAlunos[matricula] = aluno;
-
-      Console.Clear();
-      Console.WriteLine("Aluno(a) cadastrado(a) com sucesso.");
-      Console.WriteLine();
+      Aluno aluno = new Aluno(nome, sobrenome, matricula, curso);
+      bool sucesso = BancoDeDados.DictAlunos.TryAdd(matricula, aluno);
+      if (sucesso)
+      {
+        Console.Clear();
+        Console.WriteLine("Aluno(a) cadastrado(a) com sucesso.");
+        Console.WriteLine();
+      }
+      else
+      {
+        Console.Clear();
+        Console.WriteLine("Esta matrícula já existe!");
+        Console.WriteLine();
+      }
     }
-
     public void AdicionarProfessor()
     {
       Console.WriteLine("Matrícula do(a) professor(a):");
@@ -39,15 +44,24 @@ namespace GestaoAcademica.Models
       string nome = Console.ReadLine();
       Console.WriteLine("Sobrenome do(a) professor(a):");
       string sobrenome = Console.ReadLine();
+      Console.WriteLine("Disciplina do(a) professor(a):");
+      string disciplina = Console.ReadLine();
 
-      Professor professor = new Professor(nome, sobrenome, matricula);
-      BancoDeDados.DictProfessores[matricula] = professor;
-
-      Console.Clear();
-      Console.WriteLine("Professor(a) cadastrado(a) com sucesso.");
-      Console.WriteLine();
+      Professor professor = new Professor(nome, sobrenome, matricula, disciplina);
+      bool sucesso = BancoDeDados.DictProfessores.TryAdd(matricula, professor);
+      if (sucesso)
+      {
+        Console.Clear();
+        Console.WriteLine("Professor(a) cadastrado(a) com sucesso.");
+        Console.WriteLine();
+      }
+      else
+      {
+        Console.Clear();
+        Console.WriteLine("Esta matrícula já existe!");
+        Console.WriteLine();
+      }
     }
-
     public void ListarAlunos()
     {
       Console.WriteLine("Lista de alunos:");

@@ -8,7 +8,7 @@ namespace GestaoAcademica.Models
 {
   public static class BancoDeDados
   {
-    public static Dictionary<string, Aluno> DictAlunos = new Dictionary<string, Aluno>();
-    public static Dictionary<string, Professor> DictProfessores = new Dictionary<string, Professor>();
+    public static Dictionary<string, Aluno> DictAlunos = new();
+    public static Dictionary<string, Professor> DictProfessores = new();
   }
 }
