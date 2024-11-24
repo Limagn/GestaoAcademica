@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace GestaoAcademica.Models
 {
-  public class Pessoa
+  public abstract class Pessoa
   {
-    public Pessoa(string nome, string sobrenome, string cpf)
+    public Pessoa(string nome, string sobrenome, string matricula)
     {
       Nome = nome;
       Sobrenome = sobrenome;
-      Cpf = cpf;
+      Matricula = matricula;
     }
 
-    public Pessoa(string nome, string sobrenome, string cpf, int idade) : this(nome, sobrenome, cpf)
+    public Pessoa(string nome, string sobrenome, string matricula, int idade) : this(nome, sobrenome, matricula)
     {
       Idade = idade;
     }
 
     private string _nome;
     private string _sobrenome;
-    private string _cpf;
+    private string _matricula;
 
     public string Nome
     {
@@ -52,40 +52,23 @@ namespace GestaoAcademica.Models
       }
     }
 
-    public string Cpf
+    public string Matricula
     {
-      get => _cpf;
+      get => _matricula;
 
       set
       {
         if (value == null)
         {
-          throw new ArgumentException("O cpf não pode ser vazio.");
+          throw new ArgumentException("A matricula não pode ser vazia.");
         }
-        _cpf = value;
+        _matricula = value;
       }
     }
 
     public string NomeCompleto => $"{Nome} {Sobrenome}";
     public int Idade {  get; set; }
 
-    public void Informacoes()
-    {
-      if (Idade != 0)
-      {
-        Console.WriteLine("\n--------Dados--------\n" +
-          $"\nNome: {NomeCompleto}" +
-          $"\nCPF: {Cpf}" +
-          $"\nIdade: {Idade}"
-        );
-      } 
-      else
-      {
-        Console.WriteLine("\n--------Dados--------\n" +
-          $"\nNome: {NomeCompleto}" +
-          $"\nCPF: {Cpf}"
-        );
-      }
-    }
+    public abstract void Apresentacao();
   }
 }
