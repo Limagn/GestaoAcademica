@@ -8,5 +8,6 @@ namespace GestaoAcademica.Models
 {
   public interface IAvaliacao
   {
+    void Avaliar(string nome, int nota);
   }
 }
